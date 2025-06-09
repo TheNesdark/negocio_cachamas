@@ -1,5 +1,7 @@
 <?php
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
+
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

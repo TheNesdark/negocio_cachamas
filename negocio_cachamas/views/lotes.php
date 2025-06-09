@@ -1,5 +1,7 @@
 <?php
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
@@ -33,8 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php include("header.php"); ?>
 
+
+
 <div class="container-fluid mt-4">
-    <h2 class="text-center">Registrar Loteee</h2>
+    <h2 class="text-center">Registrar Lote</h2>
 
     <div class="row justify-content-center">
         <div class="col-md-6 col-sm-12">

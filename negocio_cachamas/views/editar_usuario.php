@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
+
 
 if (!isset($_SESSION["usuario_id"])) {
     header("Location: login.php");
@@ -23,6 +25,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     
@@ -45,13 +48,13 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                     <small class="text-muted">Deja en blanco si no deseas cambiar la contraseña</small>
                 </div>
 
-                <button type="submit" name="editar" class="btn btn-success btn-lg w-100">Guardar cambios</button>
+                <button type="submit" name="editar" class="btn btn-success btn-lg w-100"><i class="fa-solid fa-pen-to-square"></i> Guardar cambios</button>
             </form>
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="usuarios.php" class="btn btn-secondary btn-lg w-50">Volver</a>
+        <a href="usuarios.php" class="btn btn-secondary btn-lg w-50"><i class="fa-solid fa-backward"></i> Volver</a>
     </div>
 </div>
 

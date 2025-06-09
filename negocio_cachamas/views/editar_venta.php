@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Venta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     
@@ -60,13 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="date" name="fecha_venta" class="form-control" value="<?= htmlspecialchars($venta["fecha_venta"]); ?>" required>
                 </div>
 
-                <button type="submit" class="btn btn-success btn-lg w-100">Guardar cambios</button>
+                <button type="submit" class="btn btn-success btn-lg w-100"><i class="fa-solid fa-pen-to-square"></i> Guardar cambios</button>
             </form>
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="ventas.php" class="btn btn-secondary btn-lg w-50">Volver</a>
+        <a href="ventas.php" class="btn btn-secondary btn-lg w-50"><i class="fa-solid fa-backward"></i> Volver</a>
     </div>
 </div>
 

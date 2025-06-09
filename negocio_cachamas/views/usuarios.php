@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
+
 
 // Verificar acceso de administrador
 if (!isset($_SESSION["usuario_id"])) {

@@ -1,13 +1,17 @@
 <?php
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["usuario"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $rol_id = $_POST["rol_id"]; // Capturar el rol seleccionado
 
-    $stmt = $conexion->prepare("INSERT INTO usuarios (usuario, password) VALUES (:usuario, :password)");
+    // Insertar usuario con rol
+    $stmt = $conexion->prepare("INSERT INTO usuarios (usuario, password, rol_id) VALUES (:usuario, :password, :rol_id)");
     $stmt->bindParam(":usuario", $usuario);
     $stmt->bindParam(":password", $password);
+    $stmt->bindParam(":rol_id", $rol_id);
 
     if ($stmt->execute()) {
         header("Location: login.php?mensaje=Registro exitoso");
@@ -43,6 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" name="password" class="form-control" placeholder="Ingrese una contraseña segura" required>
                 <small class="text-muted">Debe contener al menos 8 caracteres</small>
             </div>
+            <div>
+                <label for="rol_id" class="form-label">Rol de usuario</label>
+                <select name="rol_id" class="form-control" required>
+                    <option value="1">Administrador</option>
+                    <option value="2">Vendedor</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-success btn-lg w-100">Registrarse</button>
         </form>
 
@@ -55,5 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 

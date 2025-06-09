@@ -1,6 +1,7 @@
 <?php
 require_once "../config.php";
 
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $stmt = $conexion->prepare("SELECT * FROM clientes WHERE id = :id");
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cliente</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -64,17 +66,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <textarea name="direccion" class="form-control"><?= htmlspecialchars($cliente['direccion']); ?></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-success btn-lg w-100">Actualizar Cliente</button>
+                <button type="submit" class="btn btn-success btn-lg w-100"><i class="fa-solid fa-pen-to-square"></i> Actualizar Cliente</button>
             </form>
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="clientes.php" class="btn btn-secondary btn-lg w-50">Volver</a>
+        <a href="clientes.php" class="btn btn-secondary btn-lg w-50"><i class="fa-solid fa-backward"></i> Volver</a>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 

@@ -1,30 +1,33 @@
 
 <?php
-// Consultar datos de ventas y gastos en una sola ejecución
+require_once __DIR__ . "/../config.php";
+
+
+
+
 $stmt = $conexion->prepare("
     SELECT fecha_venta, SUM(peso_vendido * precio_por_kg) AS total FROM ventas GROUP BY fecha_venta ORDER BY fecha_venta ASC;
     SELECT fecha, SUM(monto) AS total FROM gastos GROUP BY fecha ORDER BY fecha ASC;
 ");
 $stmt->execute();
 
-// Dividir las consultas
+
 $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt->nextRowset(); // Cambiar a la siguiente consulta
+$stmt->nextRowset(); 
 $gastos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Datos para gráficos
 $labelsVentas = array_column($ventas, 'fecha_venta');
 $dataVentas = array_column($ventas, 'total');
 
 $labelsGastos = array_column($gastos, 'fecha');
 $dataGastos = array_column($gastos, 'total');
 
-// Calcular totales
+
 $totalGeneralVentas = array_sum($dataVentas);
 $totalGeneralGastos = array_sum($dataGastos);
 $gananciaNeta = $totalGeneralVentas - $totalGeneralGastos;
 
-// Cambiar color de ganancia si es negativa
+
 $colorGanancia = ($gananciaNeta >= 0) ? 'bg-primary' : 'bg-warning';
 ?>
 
@@ -40,7 +43,6 @@ $colorGanancia = ($gananciaNeta >= 0) ? 'bg-primary' : 'bg-warning';
 <body class="bg-light">
 
 <div class="container-fluid mt-4">
-    <h2 class="text-center">Panel de Control Financiero</h2>
 
     <div class="row text-center mb-4">
         <div class="col-md-6 col-sm-12 mb-2">
@@ -59,6 +61,7 @@ $colorGanancia = ($gananciaNeta >= 0) ? 'bg-primary' : 'bg-warning';
                 </div>
             </div>
         </div>
+        <?php if (isset($_SESSION["rol_id"]) && $_SESSION["rol_id"] == 1): ?>
         <div class="col-md-12">
             <div class="card <?= $colorGanancia ?> text-white shadow">
                 <div class="card-body">
@@ -67,6 +70,7 @@ $colorGanancia = ($gananciaNeta >= 0) ? 'bg-primary' : 'bg-warning';
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 
     <div class="row">

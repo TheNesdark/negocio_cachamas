@@ -1,11 +1,10 @@
 <?php
 
-
 $host = "localhost";
-$puerto = "3307";
 $usuario = "root";
 $contrasena = "";
 $baseDatos = "negocio_cachamas";
+$puerto = "3307";
 
 try {
     $conexion = new PDO("mysql:host=$host;port=$puerto;dbname=$baseDatos;charset=utf8", $usuario, $contrasena);
@@ -13,5 +12,12 @@ try {
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
+
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
+
 

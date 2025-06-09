@@ -28,9 +28,6 @@
                 <button type="submit" class="btn btn-primary btn-lg w-100">Ingresar</button>
             </form>
 
-            <div class="text-center mt-3">
-                <a href="recuperar.php" class="text-decoration-none text-muted">¿Olvidó su contraseña?</a>
-            </div>
         </div>
     </div>
 

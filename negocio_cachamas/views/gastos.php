@@ -1,5 +1,7 @@
 <?php
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST["descripcion"];

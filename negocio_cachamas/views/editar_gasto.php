@@ -1,5 +1,6 @@
 <?php
 require_once "../config.php";
+require_once "../controllers/verificar_acceso.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Gasto</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -69,13 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-success btn-lg w-100">Actualizar Gasto</button>
+                <button type="submit" class="btn btn-success btn-lg w-100"><i class="fa-solid fa-pen-to-square"></i> Actualizar Gasto</button>
             </form>
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="gastos.php" class="btn btn-secondary btn-lg w-50">Volver</a>
+        <a href="gastos.php" class="btn btn-secondary btn-lg w-50"><i class="fa-solid fa-backward"></i> Volver</a>
     </div>
 </div>
 
